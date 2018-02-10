@@ -56,13 +56,13 @@ S_30E30L = []
 
 FileID = ["FC*E0min", "FC*E5min", "FC*E10min", "FC*E20min", "FC*E30min", "FC*E30minD30","contol*/"]
 Names  = ["O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 30 min","Control"]
-Types  = [S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_control]
+Times  = [S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_control]
 # <codecell>
 
-for iCurve,Curves in enumerate(Types):
+for iCurve,Curves in enumerate(Times):
     print(iCurve)
 
-for iCurve,Curves in enumerate(Types):
+for iCurve,Curves in enumerate(Times):
     Curve=[]
     for files in glob.glob(Path + FileID[iCurve] + '*.csv'):
         Curve.append(files)
