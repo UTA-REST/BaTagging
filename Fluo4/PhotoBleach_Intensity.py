@@ -66,7 +66,7 @@ plt.figure(figsize=(10,10))
 
 for iCurve,Curves in enumerate(Times):
     Curve=[]
-    for files in glob.glob(Path + FileID[iCurve] + '*.csv'):
+    for files in glob.glob(Path + FileID[iCurve] ):
         Curve.append(files)
     print(Curve)
     print(Names[iCurve],Curves)
