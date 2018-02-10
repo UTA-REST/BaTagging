@@ -62,6 +62,8 @@ Times  = [S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_control]
 for iCurve,Curves in enumerate(Times):
     print(iCurve)
 
+plt.figure(figsize=(10,100))
+
 for iCurve,Curves in enumerate(Times):
     Curve=[]
     for files in glob.glob(Path + FileID[iCurve] + '*.csv'):
@@ -70,7 +72,6 @@ for iCurve,Curves in enumerate(Times):
     print(Names[iCurve],Curves)
     # last one sees too many files  ¯\_(ツ)_/¯
 
-    plt.figure(figsize=(10,10))
 
     DATA = dict()
     for x in range(0,len(Curve)):
@@ -82,11 +83,12 @@ for iCurve,Curves in enumerate(Times):
         MyX=np.array(DATA[x]['Wavelength'][3:30],dtype=float)
         MyY=np.array(DATA[x]['Intensity'][3:30],dtype=float)
 
-        plt.plot(  np.array(MyX),np.array(MyY),color=cm.gist_heat((0+1)/7),label= r'$460 \mu M$'+' $Ba^{++}$',linewidth=2)
+        # plt.plot(  np.array(MyX),np.array(MyY),color=cm.gist_heat((iCurve+1)/7),label= Names[iCurve],linewidth=2)
+        plt.plot(  np.array(MyX),np.array(MyY),color=cm.gist_heat((iCurve+1)/7),label= Names[iCurve],linewidth=2)
 
-    plt.xlabel(r'Wavelength / nm', fontsize=28)
-    plt.ylabel('Intensity (arb. units)', fontsize=28)
-    plt.show()
+plt.xlabel(r'Wavelength / nm', fontsize=28)
+plt.ylabel('Intensity (arb. units)', fontsize=28)
+plt.show()
 
 
 # <codecell>
