@@ -31,7 +31,6 @@ import pylab
 matplotlib.rcParams.update({'font.size': 14})
 
 print ("imported modules..")
-cols=['cornflowerblue','xkcd:wine','xkcd:bubblegum pink','xkcd:medium blue','black','DarkRed','hotpink']
 
 # Read in csv
 # <codecell>
@@ -53,38 +52,63 @@ S_10E    = []
 S_20E    = []
 S_30E    = []
 S_30E30L = []
+S_Ba     = []
 
-FileID = ["FC*E0min*.csv", "FC*E5min*.csv", "FC*E10min*.csv", "FC*E20min*.csv", "FC*E30min.csv", "FC*E30minD30*.csv","control*/*.csv"]
-Names  = ["O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 30 min","Control"]
-Times  = [S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_control]
+ID = "FC4"
+SampleID = ["",ID,ID,ID,ID,ID,ID,ID]
+FileID = ["control*/*min.csv","*E0minC.csv", "*E5min*.csv", "*E10min*.csv", "*E20min*.csv", "*E30min.csv", "*E30minD60.csv","*E30minD60Ba.csv"]
+Names  = ["Control","O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 60 min","Ba"]
+Times  = [S_control,S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_Ba]
+
+cols=['black',cm.summer(1/100),cm.summer(2/15),cm.summer(4/15),cm.summer(6/15),cm.summer(8/15),cm.summer(12/15),'hotpink','xkcd:bubblegum pink']
+# cols=['xkcd:wine','DarkRed','orange','hotpink','xkcd:bubblegum pink','xkcd:medium blue','green','black']
+
+mark=['s','s','v','v','v','v',"v","^",'d','d']
+
 # <codecell>
 
-for iCurve,Curves in enumerate(Times):
-    print(iCurve)
+# # Print all file names for each exp time
+# for iCurve,Curves in enumerate(Times):
+#     print(iCurve)
 
+# Figure for all curves
 plt.figure(figsize=(10,10))
 
+IatT_0, Icontrol = [],[]
 for iCurve,Curves in enumerate(Times):
     Curve=[]
-    for files in glob.glob(Path + FileID[iCurve] ):
+    for files in glob.glob(Path + SampleID[iCurve] + FileID[iCurve] ):
         Curve.append(files)
-    print(Curve)
-    print(Names[iCurve],Curves)
-    # last one sees too many files  ¯\_(ツ)_/¯
+    # print(Curve)
+    # print(Names[iCurve],Curves)
 
-
+    # One DATA array for each exp time
     DATA = dict()
+    W_, I= [],[]
     for x in range(0,len(Curve)):
-        print(Curve[x])
+        # print(Curve[x])
         DATA[x] = pd.read_csv(Curve[x],delimiter=',',names=['Wavelength','Intensity','nah'])
         # DATA[x]['Wavelength'][3:6]
         # DATA[x]['Intensity'][3:6]
 
+        W.append(np.array(DATA[x]['Wavelength'][3:30],dtype=float))
+        I.append(np.array(DATA[x]['Intensity'][3:30],dtype=float))
         MyX=np.array(DATA[x]['Wavelength'][3:30],dtype=float)
         MyY=np.array(DATA[x]['Intensity'][3:30],dtype=float)
 
-        # plt.plot(  np.array(MyX),np.array(MyY),color=cm.gist_heat((iCurve+1)/7),label= Names[iCurve],linewidth=2)
-        plt.plot(  np.array(MyX),np.array(MyY),color=cols[iCurve],label= Names[iCurve],linewidth=2)
+        print(iCurve)
+        if iCurve == 0:
+            Icontrol.append(np.array(DATA[x]['Intensity'][3:30],dtype=float))
+        if iCurve == 1:
+            IatT_0.append(np.array(DATA[x]['Intensity'][3:30],dtype=float))
+
+        Iemit = 1-((Icontrol[0]-MyY)/Icontrol[0])
+        if iCurve > 0:
+            Ifrac = 1-((IatT_0[0]-MyY)/IatT_0[0])
+
+            # plt.scatter(  np.array(MyX),np.array(Ifrac),color=cols[iCurve],label= Names[iCurve],marker=mark[iCurve],linewidth=1)
+
+            plt.scatter(  np.array(MyX),np.array(Iemit),color=cols[iCurve],label= Names[iCurve],marker=mark[iCurve],linewidth=1)
 
 plt.xlabel(r'Wavelength / nm', fontsize=28)
 plt.ylabel('Intensity (arb. units)', fontsize=28)
