@@ -37,20 +37,51 @@ cols=['xkcd:medium blue','xkcd:wine','xkcd:bubblegum pink','black','DarkRed','co
 # <codecell>
 #
 Path =  '../DATA/Fluo-4/'
-datass = None
-datass = []
+
+############################################
+# This study had 4 samples + 1 control
+# All exposed (or let stand) in intervas
+# 1 file = 1 sample at a given interval
+############################################
+
+# One array for each exposure time
+S_control = []
+# By tot minutes exposed (E) and let stand (L)
+S_0E     = []
+S_5E     = []
+S_10E    = []
+S_20E    = []
+S_30E    = []
+S_30E30L = []
+
+FileID = ["/control-youmustlearncontrol/", "FC*E0min", "FC*E5min", "FC*E10min", "FC*E20min", "FC*E30min", "FC*E30minD30"]
+Names  = ["Control", "O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 30 min"]
+Types  = [S_control,S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L]
+
+Curves=[]
+for iCurve,Curves in enumerate(Types):
+    for files in glob.glob(Path + FileID[iCurve] + '*.csv'):
+        Curves.append(files)
+    print(Names[iCurve],Curves)
+
+# last one sees too many files  ¯\_(ツ)_/¯
+
+# <codecell>
+
+
 for files in glob.glob(Path + '*.csv'):
-    datass.append(files)
-print(datass)
+    Curves.append(files)
+print(Curves)
 DATA = dict()
 
 for x in range(0,len(files)):
-    DATA[x] = pd.read_csv(datass[x],delimiter=',',names=['Wavelength','Intensity','Other'])
+    DATA[x] = pd.read_csv(Sample[x],delimiter=',',names=['Wavelength','Intensity','nah'])
 DATA[0]['Wavelength'][0:11]
 #os.listdir()
 
 # <codecell>
 
+print(" ")
 # <codecell>
 
 
