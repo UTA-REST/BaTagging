@@ -21,9 +21,6 @@ import os
 import glob
 import pandas as pd
 import pylab
-# from scipy.optimize import curve_fit
-# from scipy.signal import savgol_filter
-# from scipy import integrate
 
 # Non-hobo style
 # <codecell>
@@ -38,10 +35,10 @@ print ("imported modules..")
 Path =  '../DATA/Fluo-4/'
 
 # Single samples FCN or all FC*
-ID = "FC1"
+ID = "FC4"
 
 # Raw, Frac(Fraction from the 0min sample) or Irel(above control)
-ToPlt = 'Irel'
+ToPlt = 'Frac'
 
 ############################################
 # This study had 4 samples + 1 control
@@ -49,8 +46,8 @@ ToPlt = 'Irel'
 # 1 file = 1 sample at a given interval
 ############################################
 
-# One array for each exposure time
 S_control = []
+# One array for each exposure time
 # By tot minutes exposed (E) and let stand (L)
 S_0E     = []
 S_5E     = []
@@ -62,14 +59,13 @@ S_Ba     = []
 
 
 SampleID = ["",ID,ID,ID,ID,ID,ID,ID]
-FileID = ["control*/*min.csv","*E0minC.csv", "*E5min*.csv", "*E10min*.csv", "*E20min*.csv", "*E30min.csv", "*E30minD60.csv","*E30minD60Ba.csv"]
-Names  = ["Control","O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 60 min","Ba"]
-Times  = [S_control,S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_Ba]
+FileID   = ["control*/*min.csv","*E0minC.csv", "*E5min*.csv", "*E10min*.csv", "*E20min*.csv", "*E30min.csv", "*E30minD60.csv","*E30minD60Ba.csv"]
+Names    = ["Control","O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 60 min","Ba"]
+Times    = [S_control,S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_Ba]
 
-cols=['black',cm.summer(1/100),cm.summer(2/15),cm.summer(4/15),cm.summer(6/15),cm.summer(8/15),cm.summer(12/15),'hotpink','xkcd:bubblegum pink']
-# cols=['xkcd:wine','DarkRed','orange','hotpink','xkcd:bubblegum pink','xkcd:medium blue','green','black']
+cols     = ['black', cm.summer(1/100), cm.summer(2/15), cm.summer(4/15), cm.summer(6/15), cm.summer(8/15), cm.summer(12/15),'hotpink','xkcd:bubblegum pink']
 
-mark=['s','s','v','v','v','v',"v","^",'d','d']
+mark=['s','s','v','v','v','v',"d","^",'d','d']
 
 # <codecell>
 
@@ -78,11 +74,19 @@ mark=['s','s','v','v','v','v',"v","^",'d','d']
 #     print(iCurve)
 
 # Figure for all curves
-#fig=plt.figure(figsize=(10,10))
 fig,ax = plt.subplots(figsize=(10,10))
 
+# To keep data from the control sample & the t=0
 IatT_0, Icontrol = [],[]
+
+## First 2 rows are words, then data up to row 99
+i,f = 3,90
+
+
+# For each exposure time, get all the files (if multiple samples), Make
+# and plot curves specified in ToPlt. Does not average yet.
 for iCurve,Curves in enumerate(Times):
+
     Curve=[]
     for files in glob.glob(Path + SampleID[iCurve] + FileID[iCurve] ):
         Curve.append(files)
@@ -93,27 +97,36 @@ for iCurve,Curves in enumerate(Times):
     DATA = dict()
     W_, I= [],[]
     for x in range(0,len(Curve)):
-        # print(Curve[x])
+
         DATA[x] = pd.read_csv(Curve[x],delimiter=',',names=['Wavelength','Intensity','nah'])
         # DATA[x]['Wavelength'][3:6]
         # DATA[x]['Intensity'][3:6]
 
-        W.append(np.array(DATA[x]['Wavelength'][3:30],dtype=float))
-        I.append(np.array(DATA[x]['Intensity'][3:30],dtype=float))
-        MyX=np.array(DATA[x]['Wavelength'][3:30],dtype=float)
-        MyY=np.array(DATA[x]['Intensity'][3:30],dtype=float)
+        W.append(np.array(DATA[x]['Wavelength'][i:f],dtype=float))
+        I.append(np.array(DATA[x]['Intensity'][i:f],dtype=float))
+        MyX=np.array(DATA[x]['Wavelength'][i:f],dtype=float)
+        MyY=np.array(DATA[x]['Intensity'][i:f],dtype=float)
 
         if iCurve == 0:
-            Icontrol.append(np.array(DATA[x]['Intensity'][3:30],dtype=float))
+            Icontrol.append(np.array(DATA[x]['Intensity'][i:f],dtype=float))
         if iCurve == 1:
-            IatT_0.append(np.array(DATA[x]['Intensity'][3:30],dtype=float))
+            IatT_0.append(np.array(DATA[x]['Intensity'][i:f],dtype=float))
 
-        Iemit = 1-((Icontrol[0]-MyY))#/Icontrol[0])
-        if iCurve > 0:
+        Iemit = 1-((Icontrol[0]-MyY))
+
+        if iCurve > 0:#skip control
+
             Ifrac = 1-((IatT_0[0]-MyY)/IatT_0[0])
 
             if ToPlt == 'Frac':
                 ax.scatter(  np.array(MyX),np.array(Ifrac),
+                color=cols[iCurve],
+                label= Names[iCurve],
+                marker=mark[iCurve],
+                linewidth=1)
+
+            if ToPlt == 'Raw':
+                ax.scatter(  np.array(MyX),np.array(MyY),
                 color=cols[iCurve],
                 label= Names[iCurve],
                 marker=mark[iCurve],
@@ -130,19 +143,24 @@ ax.set_xlabel(r'Wavelength [nm]', fontsize=28)
 
 if ToPlt == 'Raw':
     ax.set_ylabel('Intensity [arb. units]', fontsize=28)
+    ax.legend(loc='upper right')
+
 if ToPlt == 'Frac':
-    ax.set_ylabel('Intensity Fraction w.r.t t=0  ', fontsize=28)
+    ax.set_ylabel('Intensity Fraction  ', fontsize=28)
+    ax.legend(loc='upper right',bbox_to_anchor=(0.6, 0.50, 0.1, 0.4),ncol=2) # still don't understand those coordinates..
+
 if ToPlt == 'Irel':
     ax.set_ylabel('Relative Intensity [arb. units]', fontsize=28)
+    ax.legend(loc='upper right')
 
-ax.text(0.01,0.95, ' Sample:'+ID,
+ax.text(0.01,0.96, ' Sample:'+ID,
 verticalalignment='bottom',
 horizontalalignment='left',
 transform=ax.transAxes,
 fontsize=18,)
 
-ax.legend(loc='lower right', bbox_to_anchor=(0.8, 0.0, 0.2, 0.4), ncol=2)
 fig.savefig(Path+ToPlt+'_'+ID+'.pdf')
+# TODO: Check if these have to be committed for my latex/markup to pull them ok.
 
 
 # <codecell>
