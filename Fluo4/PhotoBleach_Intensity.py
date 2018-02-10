@@ -37,6 +37,12 @@ print ("imported modules..")
 #
 Path =  '../DATA/Fluo-4/'
 
+# Single samples FCN or all FC*
+ID = "FC1"
+
+# Raw, Frac(Fraction from the 0min sample) or Irel(above control)
+ToPlt = 'Irel'
+
 ############################################
 # This study had 4 samples + 1 control
 # All exposed (or let stand) in intervas
@@ -54,7 +60,7 @@ S_30E    = []
 S_30E30L = []
 S_Ba     = []
 
-ID = "FC4"
+
 SampleID = ["",ID,ID,ID,ID,ID,ID,ID]
 FileID = ["control*/*min.csv","*E0minC.csv", "*E5min*.csv", "*E10min*.csv", "*E20min*.csv", "*E30min.csv", "*E30minD60.csv","*E30minD60Ba.csv"]
 Names  = ["Control","O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 60 min","Ba"]
@@ -72,7 +78,8 @@ mark=['s','s','v','v','v','v',"v","^",'d','d']
 #     print(iCurve)
 
 # Figure for all curves
-plt.figure(figsize=(10,10))
+#fig=plt.figure(figsize=(10,10))
+fig,ax = plt.subplots(figsize=(10,10))
 
 IatT_0, Icontrol = [],[]
 for iCurve,Curves in enumerate(Times):
@@ -96,23 +103,46 @@ for iCurve,Curves in enumerate(Times):
         MyX=np.array(DATA[x]['Wavelength'][3:30],dtype=float)
         MyY=np.array(DATA[x]['Intensity'][3:30],dtype=float)
 
-        print(iCurve)
         if iCurve == 0:
             Icontrol.append(np.array(DATA[x]['Intensity'][3:30],dtype=float))
         if iCurve == 1:
             IatT_0.append(np.array(DATA[x]['Intensity'][3:30],dtype=float))
 
-        Iemit = 1-((Icontrol[0]-MyY)/Icontrol[0])
+        Iemit = 1-((Icontrol[0]-MyY))#/Icontrol[0])
         if iCurve > 0:
             Ifrac = 1-((IatT_0[0]-MyY)/IatT_0[0])
 
-            # plt.scatter(  np.array(MyX),np.array(Ifrac),color=cols[iCurve],label= Names[iCurve],marker=mark[iCurve],linewidth=1)
+            if ToPlt == 'Frac':
+                ax.scatter(  np.array(MyX),np.array(Ifrac),
+                color=cols[iCurve],
+                label= Names[iCurve],
+                marker=mark[iCurve],
+                linewidth=1)
 
-            plt.scatter(  np.array(MyX),np.array(Iemit),color=cols[iCurve],label= Names[iCurve],marker=mark[iCurve],linewidth=1)
+            if ToPlt == 'Irel':
+                ax.scatter(  np.array(MyX),np.array(Iemit),
+                color=cols[iCurve],
+                label= Names[iCurve],
+                marker=mark[iCurve],
+                linewidth=1)
 
-plt.xlabel(r'Wavelength / nm', fontsize=28)
-plt.ylabel('Intensity (arb. units)', fontsize=28)
-plt.show()
+ax.set_xlabel(r'Wavelength [nm]', fontsize=28)
+
+if ToPlt == 'Raw':
+    ax.set_ylabel('Intensity [arb. units]', fontsize=28)
+if ToPlt == 'Frac':
+    ax.set_ylabel('Intensity Fraction w.r.t t=0  ', fontsize=28)
+if ToPlt == 'Irel':
+    ax.set_ylabel('Relative Intensity [arb. units]', fontsize=28)
+
+ax.text(0.01,0.95, ' Sample:'+ID,
+verticalalignment='bottom',
+horizontalalignment='left',
+transform=ax.transAxes,
+fontsize=18,)
+
+ax.legend(loc='lower right', bbox_to_anchor=(0.8, 0.0, 0.2, 0.4), ncol=2)
+fig.savefig(Path+ToPlt+'_'+ID+'.pdf')
 
 
 # <codecell>
