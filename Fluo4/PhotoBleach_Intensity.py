@@ -31,7 +31,7 @@ import pylab
 matplotlib.rcParams.update({'font.size': 14})
 
 print ("imported modules..")
-cols=['xkcd:medium blue','xkcd:wine','xkcd:bubblegum pink','black','DarkRed','cornflowerblue','hotpink']
+cols=['cornflowerblue','xkcd:wine','xkcd:bubblegum pink','xkcd:medium blue','black','DarkRed','hotpink']
 
 # Read in csv
 # <codecell>
@@ -54,7 +54,7 @@ S_20E    = []
 S_30E    = []
 S_30E30L = []
 
-FileID = ["FC*E0min", "FC*E5min", "FC*E10min", "FC*E20min", "FC*E30min", "FC*E30minD30","contol*/"]
+FileID = ["FC*E0min*.csv", "FC*E5min*.csv", "FC*E10min*.csv", "FC*E20min*.csv", "FC*E30min.csv", "FC*E30minD30*.csv","control*/*.csv"]
 Names  = ["O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 30 min","Control"]
 Times  = [S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_control]
 # <codecell>
@@ -62,7 +62,7 @@ Times  = [S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_control]
 for iCurve,Curves in enumerate(Times):
     print(iCurve)
 
-plt.figure(figsize=(10,100))
+plt.figure(figsize=(10,10))
 
 for iCurve,Curves in enumerate(Times):
     Curve=[]
@@ -84,7 +84,7 @@ for iCurve,Curves in enumerate(Times):
         MyY=np.array(DATA[x]['Intensity'][3:30],dtype=float)
 
         # plt.plot(  np.array(MyX),np.array(MyY),color=cm.gist_heat((iCurve+1)/7),label= Names[iCurve],linewidth=2)
-        plt.plot(  np.array(MyX),np.array(MyY),color=cm.gist_heat((iCurve+1)/7),label= Names[iCurve],linewidth=2)
+        plt.plot(  np.array(MyX),np.array(MyY),color=cols[iCurve],label= Names[iCurve],linewidth=2)
 
 plt.xlabel(r'Wavelength / nm', fontsize=28)
 plt.ylabel('Intensity (arb. units)', fontsize=28)
