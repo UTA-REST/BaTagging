@@ -1,4 +1,4 @@
-FC0-E30minD60Ba1,,
+FC0-E30minD60Ba1,,0
 Wavelength (nm),Intensity (a.u.),
 504.9200134,260.4683533,
 505.9700012,197.1090546,
@@ -97,34 +97,34 @@ Wavelength (nm),Intensity (a.u.),
 598.9699707,20.31659698,
 599.8499756,19.52306557,
 600.8800049,19.27907372,
-
-FC0-E30minD60Ba1,
-FC0-E30minD60Ba1
-Collection Time: 1/26/2018 9:37:43 PM
-Operator Name  : FPsi-JediMaster
-Scan Software Version: 1.2(147)
-Parameter List :
-Instrument                        Cary Eclipse
-Instrument Serial Number          MY17190007
-Data mode                         Fluorescence
-Scan mode                         Emission
-X Mode                            Wavelength (nm)
-Start (nm)                        505.00
-Stop (nm)                         600.00
-Ex. Wavelength (nm)               488.00
-Ex. Slit (nm)                     10
-Em. Slit (nm)                     10
-Scan rate (nm/min)                600.00
-Data interval (nm)                1.0000
-Averaging Time (s)                0.1000
-Excitation filter                 335 - 620 nm
-Emission filter                   Open
-PMT voltage (V)                   High
-Corrected spectra                 OFF
-Method Log     :
-Method Name    : C:\USERS\AGILENT\DOCUMENTS\FPSI\PHOTOBLEACHINGTESTS.FMSW
-Date/Time stamp: 1/26/2018 5:56:29 PM
-Method Modifications:
+,,
+FC0-E30minD60Ba1,,
+FC0-E30minD60Ba1,,
+Collection Time: 1/26/2018 9:37:43 PM,,
+Operator Name  : FPsi-JediMaster,,
+Scan Software Version: 1.2(147),,
+Parameter List :,,
+Instrument                        Cary Eclipse,,
+Instrument Serial Number          MY17190007,,
+Data mode                         Fluorescence,,
+Scan mode                         Emission,,
+X Mode                            Wavelength (nm),,
+Start (nm)                        505.00,,
+Stop (nm)                         600.00,,
+Ex. Wavelength (nm)               488.00,,
+Ex. Slit (nm)                     10,,
+Em. Slit (nm)                     10,,
+Scan rate (nm/min)                600.00,,
+Data interval (nm)                1.0000,,
+Averaging Time (s)                0.1000,,
+Excitation filter                 335 - 620 nm,,
+Emission filter                   Open,,
+PMT voltage (V)                   High,,
+Corrected spectra                 OFF,,
+Method Log     :,,
+Method Name    : C:\USERS\AGILENT\DOCUMENTS\FPSI\PHOTOBLEACHINGTESTS.FMSW,,
+Date/Time stamp: 1/26/2018 5:56:29 PM,,
+Method Modifications:,,
 User Delta Stop Changed: 8/31/2017 1:44:06 PM, Old: 450.00, New: 488.00
 User Delta Increment Changed: 8/31/2017 1:44:06 PM, Old:  10.00, New:   0.15
 Excitation Wavelength Changed: 8/31/2017 1:44:06 PM, Old: 350.00, New: 488.00
@@ -218,5 +218,4 @@ Overlayed Graphs Changed: 1/26/2018 9:26:57 PM, Old:ON, New:OFF
 Overlayed Graphs Changed: 1/26/2018 9:30:13 PM, Old:OFF, New:ON
 Overlayed Graphs Changed: 1/26/2018 9:33:44 PM, Old:ON, New:OFF
 Overlayed Graphs Changed: 1/26/2018 9:35:15 PM, Old:OFF, New:ON
-End Method Modifications
-
+End Method Modifications,,
