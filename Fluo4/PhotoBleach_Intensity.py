@@ -78,27 +78,14 @@ for iCurve,Curves in enumerate(Types):
     DATA[1]['Wavelength'][3:30]
     DATA[1]['Intensity'][3:30]
 
-    MyX=DATA[1]['Wavelength'][3:30]
-    MyY=DATA[1]['Intensity'][3:30]
+    MyX=np.array(DATA[1]['Wavelength'][3:30],dtype=float)
+    MyY=np.array(DATA[1]['Intensity'][3:30],dtype=float)
 
-    print(" ---- ")
-    print(np.array(MyX))
-    print(np.array(MyY))
-
-    #
-    # fig, ax = plt.subplots()
-    # binX = np.linspace(500,550,50)
-    # binY = np.linspace(400,450,50)
-    # ax.scatter(np.array(MyX),np.array(MyY),binX,binY)
-    #
-    # ax.grid()
-
-    plt.show()
-    pylab.figure(figsize=(5,5))
-    pylab.grid()
-    pylab.plot(MyX,MyY,linewidth=2)
-    pylab.xlabel("W")
-    pylab.ylabel("I")
+    # pylab.figure(figsize=(10,10))
+    # pylab.grid()
+    # pylab.plot(MyX,MyY,linewidth=2)
+    # pylab.xlabel(r'Wavelength / nm', fontsize=28)
+    # pylab.ylabel('Intensity (arb. units)', fontsize=28)
 
     plt.figure(figsize=(10,10))
 
