@@ -70,26 +70,19 @@ for iCurve,Curves in enumerate(Types):
     print(Names[iCurve],Curves)
     # last one sees too many files  ¯\_(ツ)_/¯
 
+    plt.figure(figsize=(10,10))
 
     DATA = dict()
     for x in range(0,len(Curve)):
         print(Curve[x])
         DATA[x] = pd.read_csv(Curve[x],delimiter=',',names=['Wavelength','Intensity','nah'])
-    DATA[1]['Wavelength'][3:30]
-    DATA[1]['Intensity'][3:30]
+        # DATA[x]['Wavelength'][3:6]
+        # DATA[x]['Intensity'][3:6]
 
-    MyX=np.array(DATA[1]['Wavelength'][3:30],dtype=float)
-    MyY=np.array(DATA[1]['Intensity'][3:30],dtype=float)
+        MyX=np.array(DATA[x]['Wavelength'][3:30],dtype=float)
+        MyY=np.array(DATA[x]['Intensity'][3:30],dtype=float)
 
-    # pylab.figure(figsize=(10,10))
-    # pylab.grid()
-    # pylab.plot(MyX,MyY,linewidth=2)
-    # pylab.xlabel(r'Wavelength / nm', fontsize=28)
-    # pylab.ylabel('Intensity (arb. units)', fontsize=28)
-
-    plt.figure(figsize=(10,10))
-
-    plt.plot(  np.array(MyX),np.array(MyY),color=cm.gist_heat((0+1)/7),label= r'$460 \mu M$'+' $Ba^{++}$',linewidth=2)
+        plt.plot(  np.array(MyX),np.array(MyY),color=cm.gist_heat((0+1)/7),label= r'$460 \mu M$'+' $Ba^{++}$',linewidth=2)
 
     plt.xlabel(r'Wavelength / nm', fontsize=28)
     plt.ylabel('Intensity (arb. units)', fontsize=28)
