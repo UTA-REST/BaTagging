@@ -32,13 +32,14 @@ print ("imported modules..")
 # Read in csv
 # <codecell>
 #
-Path =  '../DATA/Fluo-4/'
+#Path =  '../DATA/Fluo-4/'
+Path =  '../DATA/Bulk/'
 
 # Single samples FCN or all FC*
 ID = "FC4"
 
 # Raw, Frac(Fraction from the 0min sample) or Irel(above control)
-ToPlt = 'Frac'
+ToPlt = 'Raw'
 
 ############################################
 # This study had 4 samples + 1 control
@@ -59,19 +60,24 @@ S_Ba     = []
 
 
 SampleID = ["",ID,ID,ID,ID,ID,ID,ID]
-FileID   = ["control*/*min.csv","*E0minC.csv", "*E5min*.csv", "*E10min*.csv", "*E20min*.csv", "*E30min.csv", "*E30minD60.csv","*E30minD60Ba.csv"]
-Names    = ["Control","O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 60 min","Ba"]
+#FileID   = ["control*/*min.csv","*E0minC.csv", "*E5min*.csv", "*E10min*.csv", "*E20min*.csv", "*E30min.csv", "*E30minD60.csv","*E30minD60Ba.csv"]
+#Names    = ["Control","O min Exp", "5 min Exp", "10 min Exp", "20 min Exp", "30 min Exp", "30 min Exp + 60 min","Ba"]
+#cols     = ['black', cm.summer(1/100), cm.summer(2/15), cm.summer(4/15), cm.summer(6/15), cm.summer(8/15), cm.summer(12/15),'hotpink','xkcd:bubblegum pink']
+
+# My Calcium Green Data files... still can't open this
+FileID   = ["C0*_0.csv","Ca_E0_*.csv", "Ca_E10_*.csv", "Ca_E20_*.csv", "Ca_E60_*.csv", "Ca_E60B*.csv", "Ca_E60B*.csv","Ca_E60B*.csv"]
+Names    = ["Control","O min Exp", "10 min Exp", "30 min Exp", "60 min Exp", "Ba", "Ba","Ba"]
 Times    = [S_control,S_0E ,S_5E ,S_10E ,S_20E ,S_30E, S_30E30L,S_Ba]
 
-cols     = ['black', cm.summer(1/100), cm.summer(2/15), cm.summer(4/15), cm.summer(6/15), cm.summer(8/15), cm.summer(12/15),'hotpink','xkcd:bubblegum pink']
+cols     = ['black', cm.summer(1/100), cm.summer(2/15), cm.summer(4/15), cm.summer(6/15), cm.summer(8/15), 'hotpink','hotpink','xkcd:bubblegum pink']
 
 mark=['s','s','v','v','v','v',"d","^",'d','d']
 
 # <codecell>
 
 # # Print all file names for each exp time
-# for iCurve,Curves in enumerate(Times):
-#     print(iCurve)
+for iCurve,Curves in enumerate(Times):
+    print(iCurve)
 
 # Figure for all curves
 fig,ax = plt.subplots(figsize=(10,10))
@@ -90,17 +96,17 @@ for iCurve,Curves in enumerate(Times):
     Curve=[]
     for files in glob.glob(Path + SampleID[iCurve] + FileID[iCurve] ):
         Curve.append(files)
-    # print(Curve)
+    print(Curve)
     # print(Names[iCurve],Curves)
 
     # One DATA array for each exp time
     DATA = dict()
-    W_, I= [],[]
+    W, I= [],[]
     for x in range(0,len(Curve)):
 
         DATA[x] = pd.read_csv(Curve[x],delimiter=',',names=['Wavelength','Intensity','nah'])
-        # DATA[x]['Wavelength'][3:6]
-        # DATA[x]['Intensity'][3:6]
+        DATA[x]['Wavelength'][3:6]
+        DATA[x]['Intensity'][3:6]
 
         W.append(np.array(DATA[x]['Wavelength'][i:f],dtype=float))
         I.append(np.array(DATA[x]['Intensity'][i:f],dtype=float))
@@ -143,7 +149,7 @@ ax.set_xlabel(r'Wavelength [nm]', fontsize=28)
 
 if ToPlt == 'Raw':
     ax.set_ylabel('Intensity [arb. units]', fontsize=28)
-    ax.legend(loc='upper right')
+#    ax.legend(loc='upper right')
 
 if ToPlt == 'Frac':
     ax.set_ylabel('Intensity Fraction  ', fontsize=28)
@@ -159,7 +165,7 @@ horizontalalignment='left',
 transform=ax.transAxes,
 fontsize=18,)
 
-fig.savefig(Path+ToPlt+'_'+ID+'.pdf')
+fig.savefig(Path+ToPlt+'_CG_'+ID+'.pdf')
 # TODO: Check if these have to be committed for my latex/markup to pull them ok.
 
 
