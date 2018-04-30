@@ -1,0 +1,203 @@
+FC2-E0minC,,
+Wavelength (nm),Intensity (a.u.),
+504.9200134,321.6076355,
+505.9700012,258.1535339,
+506.8599854,231.3744202,
+507.9100037,223.9098816,
+508.9500122,212.411972,
+509.8500061,198.8922272,
+510.8999939,192.7926941,
+511.9599915,182.2554779,
+512.8699951,175.9376526,
+513.9299927,168.312149,
+514.8400269,168.819397,
+515.9000244,160.7085724,
+516.960022,154.5886536,
+517.8699951,148.9915009,
+518.9299927,146.0856171,
+519.8400269,142.7468109,
+520.8900146,136.9213257,
+521.9400024,131.5123596,
+522.9799805,128.0575256,
+523.8800049,126.8734818,
+524.9199829,122.9584732,
+525.9699707,120.7149353,
+526.8599854,119.4120331,
+527.9099731,117.3490601,
+528.9500122,114.2001419,
+529.8499756,111.6921616,
+530.8800049,107.7746429,
+531.9099731,102.7185516,
+532.9400024,104.0111847,
+533.9699707,96.24217987,
+534.8499756,92.86502075,
+535.8800049,88.45348358,
+536.9099731,83.34938812,
+537.9400024,82.69900513,
+538.9699707,80.59187317,
+539.8499756,76.58551025,
+540.8900146,75.16210175,
+541.9400024,76.08841705,
+542.9799805,66.70869446,
+543.8800049,67.9078064,
+544.9199829,66.61953735,
+545.9699707,64.6697998,
+546.8599854,60.07918167,
+547.9099731,58.81489563,
+548.9500122,56.44097519,
+549.8499756,52.60910797,
+550.8900146,52.26823425,
+551.9400024,49.63393402,
+552.9799805,47.62985229,
+553.8800049,45.63156891,
+554.9199829,45.4510498,
+555.9699707,44.53245926,
+556.8599854,42.46416473,
+557.9099731,40.66999054,
+558.9500122,40.55571365,
+559.8499756,38.89133453,
+560.8800049,39.07225418,
+561.9099731,40.77388382,
+562.9400024,38.36951828,
+563.9699707,37.21239853,
+564.8499756,36.85975647,
+565.8800049,36.5775528,
+566.9099731,36.82479095,
+567.9400024,36.0067749,
+568.9699707,35.20184326,
+569.8499756,35.8078804,
+570.8800049,35.1271019,
+571.9099731,33.59617233,
+572.9400024,33.27283478,
+573.9699707,33.43572998,
+574.8499756,31.45398521,
+575.8800049,32.4485321,
+576.9099731,30.55099869,
+577.9400024,29.06517982,
+578.9699707,28.32878494,
+579.8499756,27.41251564,
+580.8800049,25.84737206,
+581.9099731,26.28500366,
+582.9400024,25.32456017,
+583.9699707,23.616642,
+584.8499756,25.17256546,
+585.8800049,23.61135483,
+586.9099731,24.51438713,
+587.9400024,22.12078857,
+588.9699707,22.42958069,
+589.8499756,21.86073685,
+590.8800049,20.85613632,
+591.9099731,22.34757233,
+592.9400024,20.7538147,
+593.9699707,21.05620003,
+594.8499756,19.48771286,
+595.8800049,19.6067791,
+596.9099731,20.25071907,
+597.9400024,20.3693676,
+598.9699707,19.80265236,
+599.8499756,18.36376381,
+600.8800049,17.99591255,
+
+FC2-E0minC,
+FC2-E0minC
+Collection Time: 1/26/2018 6:45:13 PM
+Operator Name  :
+Scan Software Version: 1.2(147)
+Parameter List :
+Instrument                        Cary Eclipse
+Instrument Serial Number          MY17190007
+Data mode                         Fluorescence
+Scan mode                         Emission
+X Mode                            Wavelength (nm)
+Start (nm)                        505.00
+Stop (nm)                         600.00
+Ex. Wavelength (nm)               488.00
+Ex. Slit (nm)                     10
+Em. Slit (nm)                     10
+Scan rate (nm/min)                600.00
+Data interval (nm)                1.0000
+Averaging Time (s)                0.1000
+Excitation filter                 335 - 620 nm
+Emission filter                   Open
+PMT voltage (V)                   High
+Corrected spectra                 OFF
+Method Log     :
+Method Name    : C:\USERS\AGILENT\DOCUMENTS\FPSI\PHOTOBLEACHINGTESTS.FMSW
+Date/Time stamp: 1/26/2018 5:56:29 PM
+Method Modifications:
+User Delta Stop Changed: 8/31/2017 1:44:06 PM, Old: 450.00, New: 488.00
+User Delta Increment Changed: 8/31/2017 1:44:06 PM, Old:  10.00, New:   0.15
+Excitation Wavelength Changed: 8/31/2017 1:44:06 PM, Old: 350.00, New: 488.00
+Excitation Wavelength Changed: 8/31/2017 2:01:39 PM, Old: 488.00, New: 350.00
+Excitation Wavelength Changed: 8/31/2017 2:15:07 PM, Old: 350.00, New: 488.00
+Excitation Wavelength Changed: 9/2/2017 6:47:17 PM, Old: 488.00, New: 350.00
+Emission Wavelength Changed: 9/2/2017 6:49:15 PM, Old: 400.00, New: 375.00
+Instrument mode: Changed: 9/4/2017 3:26:33 PM, Old:Fluorescence, New:Phosphorescence
+Ex. Slit Width (nm): Changed: 9/4/2017 3:26:33 PM, Old:5, New:20
+Em. Slit Width (nm): Changed: 9/4/2017 3:26:33 PM, Old:5, New:10
+Scan Control Changed: 9/4/2017 3:26:33 PM, Old:Medium, New:Manual
+Instrument mode: Changed: 9/4/2017 3:27:51 PM, Old:Phosphorescence, New:Fluorescence
+Ex. Slit Width (nm): Changed: 9/4/2017 3:27:51 PM, Old:20, New:5
+Em. Slit Width (nm): Changed: 9/4/2017 3:27:51 PM, Old:10, New:5
+Current Method Changed: 1/25/2018 10:01:26 PM, Old:C:\Users\agilent\Desktop\TPBScan.FMSW, New:C:\USERS\AGILENT\DESKTOP\TPBSCAN.FMSW
+Excitation Filter: Changed: 1/25/2018 10:07:38 PM, Old:Auto, New:335 - 620 nm
+Scan Control Changed: 1/25/2018 10:07:38 PM, Old:Manual, New:Medium
+Excitation Wavelength Changed: 1/25/2018 10:07:38 PM, Old: 350.00, New: 488.00
+Emission Wavelength Changed: 1/25/2018 10:07:38 PM, Old: 375.00, New: 500.00
+Scan Control Changed: 1/25/2018 10:08:16 PM, Old:Medium, New:Slow
+Ave. time (s): Changed: 1/25/2018 10:08:16 PM, Old:0.10000, New:0.50000
+Scan Control Changed: 1/25/2018 10:10:15 PM, Old:Slow, New:Fast
+Ave. time (s): Changed: 1/25/2018 10:10:15 PM, Old:0.50000, New:0.10000
+Data interval: Changed: 1/25/2018 10:10:15 PM, Old:   1.00, New:   2.00
+PMT Volts Changed: 1/25/2018 10:11:17 PM, Old:600, New:400
+Scan mode: Changed: 1/25/2018 10:11:17 PM, Old:Emission, New:Excitation
+Emission PMT (V): Changed: 1/25/2018 10:11:17 PM, Old: 600, New: 400
+Excitation Wavelength Changed: 1/25/2018 10:11:17 PM, Old: 488.00, New: 500.00
+Emission Wavelength Changed: 1/25/2018 10:11:17 PM, Old: 500.00, New: 488.00
+PMT Volts Changed: 1/25/2018 10:12:03 PM, Old:400, New:600
+Scan mode: Changed: 1/25/2018 10:12:03 PM, Old:Excitation, New:Emission
+Emission PMT (V): Changed: 1/25/2018 10:12:03 PM, Old: 400, New: 600
+Excitation Wavelength Changed: 1/25/2018 10:12:03 PM, Old: 500.00, New: 488.00
+Emission Wavelength Changed: 1/25/2018 10:12:03 PM, Old: 488.00, New: 500.00
+Ex. Slit Width (nm): Changed: 1/25/2018 10:13:02 PM, Old:5, New:1.5
+Em. Slit Width (nm): Changed: 1/25/2018 10:13:02 PM, Old:5, New:1.5
+Scan Control Changed: 1/25/2018 10:13:02 PM, Old:Fast, New:Slow
+Ave. time (s): Changed: 1/25/2018 10:13:02 PM, Old:0.10000, New:0.50000
+Data interval: Changed: 1/25/2018 10:13:02 PM, Old:   2.00, New:   1.00
+Ex. Slit Width (nm): Changed: 1/25/2018 10:14:01 PM, Old:1.5, New:2.5
+Em. Slit Width (nm): Changed: 1/25/2018 10:14:01 PM, Old:1.5, New:2.5
+Add Text to graph Changed: 1/25/2018 10:38:26 PM, Old:Choice 0, New:Choice 1
+Add Text to graph Changed: 1/25/2018 10:38:26 PM, Old:ON, New:ON
+Add Text to graph Changed: 1/25/2018 10:38:26 PM, Old:ON, New:Choice 0
+Peak Style Changed: 1/25/2018 10:38:51 PM, Old:Peaks, New:Valleys
+Peak Style Changed: 1/25/2018 10:38:51 PM, Old:Valleys, New:Peaks Valleys
+Peak Style Changed: 1/25/2018 10:38:51 PM, Old:Peaks Valleys, New:Zero Cross
+Peak Style Changed: 1/25/2018 10:38:51 PM, Old:Zero Cross, New:Peaks
+Current Method Changed: 1/26/2018 5:57:42 PM, Old:C:\Users\agilent\Documents\FPsi\PhotobleachingTests.FMSW, New:C:\USERS\AGILENT\DOCUMENTS\FPSI\PHOTOBLEACHINGTESTS.FMSW
+Ex. Slit Width (nm): Changed: 1/26/2018 6:02:00 PM, Old:2.5, New:10
+Em. Slit Width (nm): Changed: 1/26/2018 6:02:00 PM, Old:2.5, New:10
+Ex. Slit Width (nm): Changed: 1/26/2018 6:05:58 PM, Old:10, New:2.5
+Scan Control Changed: 1/26/2018 6:05:58 PM, Old:Slow, New:Medium
+Ave. time (s): Changed: 1/26/2018 6:05:58 PM, Old:0.50000, New:0.10000
+Emission Wavelength Changed: 1/26/2018 6:05:58 PM, Old: 500.00, New: 400.00
+Stop Wavelength Changed: 1/26/2018 6:05:58 PM, Old: 600.00, New: 700.00
+PMT Volts Changed: 1/26/2018 6:10:11 PM, Old:600, New:800
+Ex. Slit Width (nm): Changed: 1/26/2018 6:10:11 PM, Old:2.5, New:5
+Emission PMT (V): Changed: 1/26/2018 6:10:11 PM, Old: 600, New: 800
+Ex. Slit Width (nm): Changed: 1/26/2018 6:11:48 PM, Old:5, New:2.5
+PMT Volts Changed: 1/26/2018 6:12:30 PM, Old:800, New:400
+Emission PMT (V): Changed: 1/26/2018 6:12:30 PM, Old: 800, New: 400
+Ex. Slit Width (nm): Changed: 1/26/2018 6:12:49 PM, Old:2.5, New:10
+Emission Wavelength Changed: 1/26/2018 6:13:46 PM, Old: 400.00, New: 500.00
+Stop Wavelength Changed: 1/26/2018 6:13:46 PM, Old: 700.00, New: 600.00
+PMT Volts Changed: 1/26/2018 6:14:32 PM, Old:400, New:800
+Emission PMT (V): Changed: 1/26/2018 6:14:32 PM, Old: 400, New: 800
+Emission Wavelength Changed: 1/26/2018 6:15:31 PM, Old: 500.00, New: 505.00
+Autoconvert Changed: 1/26/2018 6:19:59 PM, Old:None, New:Ascii with Log
+Overlayed Graphs Changed: 1/26/2018 6:20:19 PM, Old:OFF, New:ON
+Overlayed Graphs Changed: 1/26/2018 6:24:02 PM, Old:ON, New:OFF
+Overlayed Graphs Changed: 1/26/2018 6:27:03 PM, Old:OFF, New:ON
+Overlayed Graphs Changed: 1/26/2018 6:40:37 PM, Old:ON, New:OFF
+Overlayed Graphs Changed: 1/26/2018 6:44:31 PM, Old:OFF, New:ON
+End Method Modifications
+
