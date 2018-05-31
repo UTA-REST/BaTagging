@@ -51,6 +51,8 @@ ToPlt = 'Raw'
 ############################################
 
 S_control = []
+#comment
+
 # One array for each exposure time
 # By tot minutes exposed (E) and let stand (L)
 S_0E     = []
