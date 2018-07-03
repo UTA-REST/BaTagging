@@ -155,7 +155,7 @@ for iCurve,Curves in enumerate(Times):
                 linewidth=1)
 
             if ToPlt == 'Irel':
-                print('Raw')
+                print('Irel')
                 print(MyX)
                 ax.scatter(  np.array(MyX),np.array(Iemit),
                 color=cols[iCurve],
