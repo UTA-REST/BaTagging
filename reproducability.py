@@ -8,8 +8,8 @@
 
 ### Declare Global Variables ###
 Base="C:\\Users\\mcdonaldad\\Desktop\\Photobleach\\"
-Dye = "Fluo4" # Dye name from directory
-Concentration = "0.5micromol" # Dye concentration from directory
+Dye = "Rhod5" # Dye name from directory
+Concentration = "1micromol" # Dye concentration from directory
 Run = "Run2" # Run number from directory
 Trace = "Spectrum-b" # Trace name from directory (a is raw, b is averaged[10])
 Path = Base+Dye+"\\"+Concentration+"\\"+Run+"\\"+Trace+"\\" # Pathname of .csv file directory
@@ -19,14 +19,14 @@ savefig = True # Boolean for saving images
 savedata = True # Boolean for saving data
 ToPlt = "Compare" # Descriminator to make plots ('Raw','Corrected','Compare','Rel','Frac')
 
-Long_Dye = "Fluoroscine-4" # Full name of dye for graph labels
-Long_Concentration = "0.5 $\mu$M" # Concentration for graph labels
-Integration_Time = "10000 ms" # Integration time of run
-Laser_Power = "257 $\mu$W" # Laser power of run
-Filter = 515 # Filter used in run (in nm)
+Long_Dye = "Rhodamine-2" # Full name of dye for graph labels
+Long_Concentration = "0.1 $\mu$M" # Concentration for graph labels
+Integration_Time = "2000 ms" # Integration time of run
+Laser_Power = "698 $\mu$W" # Laser power of run
+Filter = 570 # Filter used in run (in nm)
 
-prefix = "Fluo4" # Text appended to the beginning of every file name
-suffix = "0.5uMb" # Text appended to the end of every file name
+prefix = "Rhod5" # Text appended to the beginning of every file name
+suffix = "1uM" # Text appended to the end of every file name
 
 OutName = Dye+'_'+Concentration+'_'+Run+'_'+Trace+'_' # Sets name for output file
 
@@ -160,7 +160,7 @@ if savedata == True: # When saving is active:
 peak=max(datacut[Cut]["Intensity"]) # Determines the maxima of the spectrum
 
 for i in range(len(DATA)): # For each file:
-#for i in np.arange(0,9): # For a small script-testing sample:
+#for i in np.arange(0,9): # For a small test sample:
     textstr="{}\nConcentration={}\nIntegration Time={}\nLaser Power={}\nFilter={} nm\n{}".format(Long_Dye,Long_Concentration,Integration_Time,Laser_Power,Filter,clocks[i])
 
     yfrac = 1-((peak-DATA[i]["Intensity"])/peak)
@@ -264,15 +264,15 @@ for i in range(len(DATA)): # For each file:
 ### Reads previously saved time profile data ###
 Data = pd.read_csv(Base+Dye+"\\"+Concentration+"\\"+Run+"\\"+"timeprofiledata.csv",delimiter=',',names=['Time','Integral'],
                     engine='python')
-time.append(Data["Time"])
-rInt.append(Data["Integral"])
+time.append(np.array(Data["Time"],dtype=float))
+rInt.append(np.array(Data["Integral"],dtype=float))
 
 # <codecell>
 ### Graphs the time profile from file ###
-figuretext="{}\nConcentration={}\nIntegration Time={}\nLaser Power={}\nFilter={} nm".format(Dye,Concentration,Integration_Time,Laser_Power,Filter)
+figuretext="{}\nConcentration={}\nIntegration Time={}\nLaser Power={}\nFilter={} nm".format(Long_Dye,Long_Concentration,Integration_Time,Laser_Power,Filter)
 plt.figure(figsize=(10,10),linewidth=2)
 plt.scatter(time,rInt, linewidth=1)
-plt.title("Relative Integral of Spectra",fontsize=15)
+plt.title("Relative Integral of {} Spectra".format(Dye),fontsize=15)
 plt.xlabel("Time (seconds)", fontsize=15)
 plt.ylabel("Light yield (arb. units)",fontsize=15)
 plt.annotate(figuretext, xy=(0.99, 0.99), xycoords='axes fraction', fontsize=11,
