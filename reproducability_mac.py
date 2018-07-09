@@ -27,7 +27,7 @@ Laser_Power = "300 $\mu$W" # Laser power of run
 Filter = 515 # Filter used in run (in nm)
 
 
-prefix = "MagG" # Text appended to the beginning of every file name
+prefix = "MG" # Text appended to the beginning of every file name
 suffix = "1uM" # Text appended to the end of every file name
 
 OutName = Dye+'_'+Concentration+'_'+Run+'_'+Trace+'_' # Sets name for output file
@@ -81,17 +81,18 @@ for file in glob.glob(Path+"*.csv"): # Crawls over Path directory looking for .c
     filename=file.split("/") # Splits the filename out of the pathname using \\ as the delimiter
     print(filename)
 
-    #filename2=filename[9] # Declares variable for the 10th array value
-    #print('filename2')
-    #filename3=filename2.split(prefix) # Splits the prefix out of the filename
-    #filename4=filename3[1] # Declares variable for the 2nd array value
-    #filename5=filename4.split(suffix) # Splits the suffix out of the filename
-    #filename6=filename5[0] # Declares variable for the 1st array value
-    #filename7=filename6.split("_") # Splits the date/time with _ as the delimiter
-    #filename8=filename7[1:] # Declares variable for the array sliced at the 2nd value
-    #times.append(filename8) # Adds the array of size 4 to the times array
-    #files.append(filename2) # Adds the 10th string value to the files array
+    filename2=filename[10] # Declares variable for the 10th array value
+    print('filename2:'+filename2)
+    filename3=filename2.split(prefix) # Splits the prefix out of the filename
+    filename4=filename3[1] # Declares variable for the 2nd array value
+    filename5=filename4.split(suffix) # Splits the suffix out of the filename
+    filename6=filename5[0] # Declares variable for the 1st array value
+    filename7=filename6.split("_") # Splits the date/time with _ as the delimiter
+    filename8=filename7[1:] # Declares variable for the array sliced at the 2nd value
+    times.append(filename8) # Adds the array of size 4 to the times array
+    files.append(filename2) # Adds the 10th string value to the files array
 # <codecell>
+
 
 
 if verbose==True: # When True:
@@ -173,8 +174,8 @@ if savedata == True: # When saving is active:
 ### Plots spectroscope data ###
 peak=max(datacut[Cut]["Intensity"]) # Determines the maxima of the spectrum
 
-for i in range(len(DATA)): # For each file:
-#for i in np.arange(0,9): # For a small test sample:
+#for i in range(len(DATA)): # For each file:
+for i in np.arange(0,9): # For a small test sample:
     textstr="{}\nConcentration={}\nIntegration Time={}\nLaser Power={}\nFilter={} nm\n{}".format(Long_Dye,Long_Concentration,Integration_Time,Laser_Power,Filter,clocks[i])
 
     yfrac = 1-((peak-DATA[i]["Intensity"])/peak)
